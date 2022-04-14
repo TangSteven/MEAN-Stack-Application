@@ -7,7 +7,7 @@ app.use(express.json()); //allows the app to understand JSON
 
 app.use(express.static(__dirname+'/public'));
 app.use('/css', express.static(__dirname + 'public/css'));
-app.use('/imgs', express.static(__dirname+ 'public/imgs'));
+app.use('/img', express.static(__dirname+ 'public/img'));
 
 app.set("view engine", "ejs"); //using EJS
 
