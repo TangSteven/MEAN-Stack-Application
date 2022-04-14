@@ -1,20 +1,24 @@
 //imports
 const express = require("express");
-const { json } = require("express/lib/response");
 const expressLayouts = require("express-ejs-layouts");
 
 const app = express(); //creates express app
 app.use(express.json()); //allows the app to understand JSON
+
+app.use(expressLayouts); // ejslayout uses layout.ejs as default layout
+//this layout.ejs will be reused on multiple pages
 app.set("view engine", "ejs"); //using EJS
+
 app.use(express.static('public')); //allows app to use static pages (css, views)
 app.use('/css', express.static(__dirname + 'public/css')); //uses the css files
 
+
 app.get("/", (req, res) => { //middleware for home page
-    res.render('pages/index'); //index.ejs
+    res.render('index'); //index.ejs
 });
 
 app.get('/about', (req, res) => { //middleware for about page
-    res.render("pages/about"); //about.ejs
+    res.render("about"); //about.ejs
 });
 
 app.post("/postHello/:id/:name", (req, res) => { //middleware to test params and query
