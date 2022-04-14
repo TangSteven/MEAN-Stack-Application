@@ -5,6 +5,10 @@ const express = require("express");
 const app = express(); //creates express app
 app.use(express.json()); //allows the app to understand JSON
 
+app.use(express.static(__dirname+'/public'));
+app.use('/css', express.static(__dirname + 'public/css'));
+app.use('/imgs', express.static(__dirname+ 'public/imgs'));
+
 app.set("view engine", "ejs"); //using EJS
 
 app.get("/", (req, res) => { //middleware for home page
