@@ -7,10 +7,6 @@ app.use(express.json()); //allows the app to understand JSON
 
 app.set("view engine", "ejs"); //using EJS
 
-app.use(express.static('public')); //allows app to use static pages (css, views)
-app.use('/css', express.static(__dirname + 'public/css')); //uses the css files
-
-
 app.get("/", (req, res) => { //middleware for home page
     res.render('index'); //index.ejs
 });
