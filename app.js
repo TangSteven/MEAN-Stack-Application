@@ -1,12 +1,10 @@
 //imports
 const express = require("express");
-const expressLayouts = require("express-ejs-layouts");
+
 
 const app = express(); //creates express app
 app.use(express.json()); //allows the app to understand JSON
 
-app.use(expressLayouts); // ejslayout uses layout.ejs as default layout
-//this layout.ejs will be reused on multiple pages
 app.set("view engine", "ejs"); //using EJS
 
 app.use(express.static('public')); //allows app to use static pages (css, views)
