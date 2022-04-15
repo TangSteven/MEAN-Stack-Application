@@ -1,11 +1,15 @@
 //imports
+
+require('dotenv').config();
+
 const express = require("express");
+const mongoose = require('mongoose');//used to connect to mongodb
 
-
+let mongodburl = "mongodb+srv://SYSTEM:" + process.env.MONGODB_PASS+"@cluster0.jn4pv.mongodb.net/Cluster0?retryWrites=true&w=majority/firstCollection";
 const app = express(); //creates express app
 app.use(express.json()); //allows the app to understand JSON
 
-app.use(express.static(__dirname+'/public'));
+app.use(express.static(__dirname+'/public')); //allows app to use static pages below
 app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/img', express.static(__dirname+ 'public/img'));
 
@@ -25,6 +29,8 @@ app.post("/postHello/:id/:name", (req, res) => { //middleware to test params and
     console.log(req.query, "query");
     res.status(200).send("postHello response");
 })
+
+mongoose.connect(mongodburl);
 
 app.listen(3000, (req, res, err) => { //builds connection to host through port 3000
     if (err) console.log(err);
