@@ -24,4 +24,13 @@ exports.addFood = async (req, res) => {
     //finds the user with the req.param.user then pushes the req.body 
     //which should be the food item into its array
     res.status('200').json(food);
+    //returns user before the push
+}
+
+exports.deleteFood = async (req, res) => {
+    const food = await userModel.findOneAndUpdate({"user": req.params.user}, {$pull: {"foods": {"name": req.body.name}}});
+    //deletes food by using findONeandUpdate, queries for the user, then pulls from the array
+    //within the array brace, there is another curly brace where it matches the food name
+    res.status('200').send(food);
+    //sends the user json before the delete
 }
