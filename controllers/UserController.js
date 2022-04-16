@@ -43,3 +43,24 @@ exports.deleteFood = async (req, res) => {
     res.status('200').send(food);
     //sends the user json before the delete
 }
+
+exports.getFavorites = async (req, res) => {
+    const foods = await userModel.findOne({"user": req.params.user}, 'foods');
+    //finds user based on req.params then it returns fields in the 2nd optional parameter named foods
+    // for multiple fields it would be 'foods _id'
+    //console.log(foods.foods);
+    let favorites = [];
+    //array to hold favorites
+    
+
+    for (let i = 0; i < foods.foods.length; i++){
+        if (foods.foods[i].favorite) {
+            favorites.push(foods.foods[i]);
+        }
+    }
+    //loop to go through all the foods and see if the favorite flag is true
+    //append if true
+    //console.log("favorites " + favorites);
+    res.status('200').json(favorites);
+    //returns the favorites array
+}

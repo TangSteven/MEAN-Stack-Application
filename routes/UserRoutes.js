@@ -10,6 +10,8 @@ router.route('/api/user').get(uc.getUsers).post(uc.createUser).delete(uc.deleteU
 
 router.route('/api/user/:user').get(uc.getFoods).post(uc.addFood).delete(uc.deleteFood);
 
+router.route('/api/user/:user/favorites').get(uc.getFavorites);
+
 
 module.exports = router;
 //export the router for use in app.js
