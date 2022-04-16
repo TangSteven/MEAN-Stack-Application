@@ -10,3 +10,8 @@ exports.getUsers = async (req, res) => {
     const users = await userModel.find();
     res.status('200').json(users);
 }
+
+exports.deleteUser = async (req, res) => {
+    const user = await userModel.deleteOne({"user": req.body.user, "pass": req.body.pass});
+    res.status('200').json(user);
+}
