@@ -17,3 +17,11 @@ exports.deleteUser = async (req, res) => {
     //deletes user based on user and pass, have to match 
     res.status('200').json(user); // returns acknowledgement + how many deleted
 }
+
+exports.addFood = async (req, res) => {
+    //adds a food item into the users food array
+    const food = await userModel.findOneAndUpdate({"user": req.params.user}, {$push: {foods: req.body}});
+    //finds the user with the req.param.user then pushes the req.body 
+    //which should be the food item into its array
+    res.status('200').json(food);
+}
