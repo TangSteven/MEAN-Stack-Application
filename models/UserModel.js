@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const userSchema = mongoose.Schema( {
+const userSchema = mongoose.Schema( { //model schema with contraints
     "user": {
         type: String,
         required: true,
@@ -26,5 +26,6 @@ const userSchema = mongoose.Schema( {
 })
 
 const userModel = mongoose.model("user", userSchema);
+//creating model based off of schema
 
 module.exports = userModel;
