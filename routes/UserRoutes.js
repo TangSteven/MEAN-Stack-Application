@@ -8,7 +8,7 @@ router.route('/api/user').get(uc.getUsers).post(uc.createUser).delete(uc.deleteU
 // for the router '/api/user' depending on the method, it will use the respective 
 //controller function
 
-router.route('/api/user/:user').post(uc.addFood).delete(uc.deleteFood);
+router.route('/api/user/:user').get(uc.getFoods).post(uc.addFood).delete(uc.deleteFood);
 
 
 module.exports = router;

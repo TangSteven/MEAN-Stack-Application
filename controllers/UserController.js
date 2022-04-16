@@ -18,6 +18,14 @@ exports.deleteUser = async (req, res) => {
     res.status('200').json(user); // returns acknowledgement + how many deleted
 }
 
+exports.getFoods = async (req, res) => {
+    const foods = await userModel.findOne({"user": req.params.user}, 'foods');
+    //finds user based on req.params then it returns fields in the 2nd optional parameter named foods
+    // for multiple fields it would be 'foods _id'
+    res.status('200').json(foods);
+    //returns the foods array with _id
+}
+
 exports.addFood = async (req, res) => {
     //adds a food item into the users food array
     const food = await userModel.findOneAndUpdate({"user": req.params.user}, {$push: {foods: req.body}});
@@ -28,6 +36,7 @@ exports.addFood = async (req, res) => {
 }
 
 exports.deleteFood = async (req, res) => {
+    //uses req.params to find the user, then req.body to match the food name to delete
     const food = await userModel.findOneAndUpdate({"user": req.params.user}, {$pull: {"foods": {"name": req.body.name}}});
     //deletes food by using findONeandUpdate, queries for the user, then pulls from the array
     //within the array brace, there is another curly brace where it matches the food name
