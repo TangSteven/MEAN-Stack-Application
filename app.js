@@ -4,8 +4,10 @@ require('dotenv').config();
 
 const express = require("express");
 const mongoose = require('mongoose');//used to connect to mongodb
+const UserRouter = require('./routes/UserRoutes');
+//userRouter for express app
 
-let mongodburl = "mongodb+srv://SYSTEM:" + process.env.MONGODB_PASS+"@cluster0.jn4pv.mongodb.net/Cluster0?retryWrites=true&w=majority/firstCollection";
+let mongodburl = "mongodb+srv://SYSTEM:" + process.env.MONGODB_PASS+"@cluster0.jn4pv.mongodb.net/Cluster0?retryWrites=true&w=majority";
 const app = express(); //creates express app
 app.use(express.json()); //allows the app to understand JSON
 
@@ -14,6 +16,8 @@ app.use('/css', express.static(__dirname + 'public/css'));
 app.use('/img', express.static(__dirname+ 'public/img'));
 
 app.set("view engine", "ejs"); //using EJS
+
+app.use(UserRouter); //using the userRouter
 
 app.get("/", (req, res) => { //middleware for home page
     res.render('index'); //index.ejs
