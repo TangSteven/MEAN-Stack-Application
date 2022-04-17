@@ -3,8 +3,11 @@ const router = express.Router();
 const uc = require('../controllers/UserController');
 
 
+router.route('/login').post(uc.loginUser);
 
-router.route('/api/user').get(uc.getUsers).post(uc.createUser).delete(uc.deleteUser);
+router.route('/register').post(uc.createUser);
+
+router.route('/api/user').get(uc.getUsers).delete(uc.deleteUser);
 // for the router '/api/user' depending on the method, it will use the respective 
 //controller function
 
