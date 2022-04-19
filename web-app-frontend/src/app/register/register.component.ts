@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 //check comments on formbuilder/validators on LoginComponent
 import { FormBuilder, Validators } from '@angular/forms';
 
+import {Router } from '@angular/router';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,7 +12,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private router: Router) { }
 
   registerForm = this.formBuilder.group( {
     username: ['', [Validators.required]],
@@ -19,6 +21,11 @@ export class RegisterComponent implements OnInit {
   })
 
   ngOnInit(): void {
+  }
+
+  register() {
+    console.log("registering");
+    this.router.navigate(['']);
   }
 
 }
