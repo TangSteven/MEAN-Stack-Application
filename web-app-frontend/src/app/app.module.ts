@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginNavComponent } from './login/login-nav/login-nav.component';
 import { RegNavComponent } from './register/reg-nav/reg-nav.component';
 import { HomeNavComponent } from './home/home-nav/home-nav.component';
+import { ServerService } from './services/server.service';
 
 const routes: Routes =([
   {path: "", component: LoginComponent},
@@ -42,7 +43,7 @@ const routes: Routes =([
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [ServerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
