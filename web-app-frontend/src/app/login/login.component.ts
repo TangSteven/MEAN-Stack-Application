@@ -7,6 +7,9 @@ import { Validators } from '@angular/forms';
 import { FormBuilder} from '@angular/forms';
 //importing FormBuilder, and Validators to validate fields to use reactive forms
 
+import { ServerService } from '../services/server.service';
+//injecting service to access the express backend
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,15 +18,15 @@ import { FormBuilder} from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   //injecting formbuilder as formBuilder into component
-  constructor(private formBuilder: FormBuilder, private router: Router) { } 
+  constructor(private formBuilder: FormBuilder, private router: Router, private backend: ServerService) { } 
 
   //creating a formgroup for the form
   loginForm = this.formBuilder.group({
     //first parameter in array is the initial value
     //the rest of the optional parameters are the validators
     // you create. ex: validator of 10 digit numbers
-    username: ['', [Validators.required]],
-    password: ['',[Validators.required, , Validators.minLength(10)]],
+    user: ['', [Validators.required]],
+    pass: ['',[Validators.required]],
   })
 
   
@@ -32,8 +35,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log("Logging in");
-    this.router.navigate(['/home']);
+    //console.log(this.loginForm.value);
+    //this.loginform.value is a json of the fields, can check by printing this.loginform
+    //uses the services function, and the json as req.body
+    this.backend.login(this.loginForm.value).subscribe( query => {
+      if (query) { // if the login was correct
+        console.log("correct login");
+        this.router.navigate(['/home']); //navigate to home page
+      }
+      else { //if login was incorrect
+        alert("WRONG PASSWORD OR WRONG USERNAME");
+      }
+    })
+    
   }
 
 }

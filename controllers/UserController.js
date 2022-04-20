@@ -15,6 +15,7 @@ exports.createUser = async (req, res) => { //model is on side note ->
 //login function 
 exports.loginUser = async (req, res) => {
     //finds the user with username
+
     const user = await userModel.findOne({"user": req.body.user});
 
     if (user != null) { //if this user does exist
@@ -28,6 +29,7 @@ exports.loginUser = async (req, res) => {
         }
         else { //if password wrong
             //dont tell which is wrong, so harder to hack
+
             console.log("Wrong username or password");
             res.status('200').json(found);
         }

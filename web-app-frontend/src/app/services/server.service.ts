@@ -15,14 +15,20 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 export class ServerService {
-
+ 
+  //inject httpclient as http
   constructor(private http: HttpClient) { }
 
-  login(user): Observable<any> {
+  //the parameter is the user and pass
+  login(user: any): Observable<any> {
     return this.http.post("http://localhost:3000/login", user);
+    //returns an observable after connecting to the backend with method POST and user as req.body
+
   }
 
-  register(user): Observable<any> {
+  
+  register(user: any): Observable<any> {
     return this.http.post("http://localhost:3000/register", user);
+    //returns an observable after connecting to the backend with method POST and user as req.body
   }
 }

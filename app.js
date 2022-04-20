@@ -1,6 +1,10 @@
 //imports
-
+//allows us to use .env values
 require('dotenv').config();
+
+//cors options
+const cors = require('cors');
+
 
 const express = require("express");
 const mongoose = require('mongoose');//used to connect to mongodb
@@ -9,6 +13,7 @@ const UserRouter = require('./routes/UserRoutes');
 
 let mongodburl = "mongodb+srv://SYSTEM:" + process.env.MONGODB_PASS+"@cluster0.jn4pv.mongodb.net/Cluster0?retryWrites=true&w=majority";
 const app = express(); //creates express app
+app.use(cors()); //allows the app to use cor options
 app.use(express.json()); //allows the app to understand JSON
 
 app.use(express.static(__dirname+'/public')); //allows app to use static pages below

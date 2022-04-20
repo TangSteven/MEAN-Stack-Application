@@ -5,10 +5,10 @@
     <h1> Register Here </h1>
     <form [formGroup]="registerForm" (ngSubmit)="register()"> 
 
-        <label for = "username">Username: </label><br/>
-        <input type = "text" name = "username" id = "username" size = "25" formControlName = "username" required> <br/>
+        <label for = "user">Username: </label><br/>
+        <input type = "text" name = "user" id = "user" size = "25" formControlName = "user" required> <br/>
         <label for = "password">Password: </label><br/>
-        <input type = "password" name = "password" id = "password" size = "25" required minlength="10" formControlName = "password" required> <br/>
+        <input type = "pass" name = "pass" id = "pass" size = "25" required minlength="10" formControlName = "pass" required> <br/>
         <label for = "confirmPassword">Confirm Password: </label><br/>
         <input type = "password" name = "confirmPassword" id = "confirmPassword" size = "25" required minlength="10" formControlName = "confirmPassword" required> <br/>
 

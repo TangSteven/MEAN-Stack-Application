@@ -17,6 +17,7 @@ import { LoginNavComponent } from './login/login-nav/login-nav.component';
 import { RegNavComponent } from './register/reg-nav/reg-nav.component';
 import { HomeNavComponent } from './home/home-nav/home-nav.component';
 import { ServerService } from './services/server.service';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes =([
   {path: "", component: LoginComponent},
@@ -42,6 +43,7 @@ const routes: Routes =([
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    HttpClientModule,
   ],
   providers: [ServerService],
   bootstrap: [AppComponent]
