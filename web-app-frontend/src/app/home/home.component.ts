@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+import { ServerService } from '../services/server.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private router: Router, private backend:ServerService ) {}
+  
+  user = ''
+  foods = this.backend.getFoods(this.user).subscribe
+  
 
   ngOnInit(): void {
   }
+
+
 
 }

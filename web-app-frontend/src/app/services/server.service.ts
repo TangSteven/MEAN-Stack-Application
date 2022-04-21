@@ -21,14 +21,18 @@ export class ServerService {
 
   //the parameter is the user and pass
   login(user: any): Observable<any> {
-    return this.http.post("http://localhost:3000/login", user);
+    return this.http.post("http://localhost:3000/login", user, {withCredentials: true});
     //returns an observable after connecting to the backend with method POST and user as req.body
 
   }
 
   
   register(user: any): Observable<any> {
-    return this.http.post("http://localhost:3000/register", user);
+    return this.http.post("http://localhost:3000/register", user, {withCredentials: true});
     //returns an observable after connecting to the backend with method POST and user as req.body
+  }
+
+  getFoods(user: any): Observable<any> {
+    return this.http.get("http://localhost:3000/api/user/"+user.user, {withCredentials: true})
   }
 }

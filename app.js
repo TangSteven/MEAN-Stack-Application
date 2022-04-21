@@ -13,7 +13,17 @@ const UserRouter = require('./routes/UserRoutes');
 
 let mongodburl = "mongodb+srv://SYSTEM:" + process.env.MONGODB_PASS+"@cluster0.jn4pv.mongodb.net/Cluster0?retryWrites=true&w=majority";
 const app = express(); //creates express app
-app.use(cors()); //allows the app to use cor options
+
+const corsOptions = {
+    origin: 'http://localhost:4200',
+    credentials: true,
+    optionSuccessStatus:200
+} // allows the origin to reach this backend, if credentials are sent with them
+
+app.use(cors(corsOptions)); //allows the app to use cor options
+
+
+
 app.use(express.json()); //allows the app to understand JSON
 
 app.use(express.static(__dirname+'/public')); //allows app to use static pages below

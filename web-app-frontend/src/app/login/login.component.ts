@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     //uses the services function, and the json as req.body
     this.backend.login(this.loginForm.value).subscribe( query => {
       if (query) { // if the login was correct
-        console.log("correct login");
+        console.log("correct login", query);
         this.router.navigate(['/home']); //navigate to home page
       }
       else { //if login was incorrect
