@@ -12,6 +12,7 @@ import { ServerService } from '../../services/server.service';
 export class HomeComponent implements OnInit {
   foods = [];
   user;
+  total = 0;
   constructor(private router: Router, private backend:ServerService) {
     
   }
@@ -21,7 +22,12 @@ export class HomeComponent implements OnInit {
     this.user = localStorage.getItem("user");
     this.backend.getFoods(this.user).subscribe(foods => {
       this.foods = foods;
+      this.foods.forEach((food) => {
+        this.total+=food.calories;
+      });
     })
+
+    
   }
 
 

@@ -1,9 +1,19 @@
 <home-nav> </home-nav> 
 <div class = "container-fluid"> 
-    <p>home works!</p>
-    <p>welcome user: {{user}}</p> 
-    <ul> 
-        <li *ngFor = "let food of foods"> "{{food.name}}"</li>
-    </ul>
+    <h1 style = "text-align: center;">Welcome user: {{user}}</h1>
+    <div class = 'col-lg-10'>
+        <h2> Food Cart</h2>
+        <ul> 
+            <li style = "list-style: none;" *ngFor = "let food of foods"> {{food.name}} has {{food.calories}} calories.</li>
+        </ul>
+        <div > Total Calories: {{total}} </div>
+    </div>
+    <div class = 'col-lg-2' style = "border: solid 2px black;">
+        <h1 style = "text-align: left;"> Add A Food</h1> 
+        <add-food> </add-food> 
+
+    </div> 
+    
+    
 </div>
 

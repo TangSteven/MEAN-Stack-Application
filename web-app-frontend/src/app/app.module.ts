@@ -18,6 +18,7 @@ import { RegNavComponent } from './register/reg-nav/reg-nav.component';
 import { HomeNavComponent } from './login/home/home-nav/home-nav.component';
 import { ServerService } from './services/server.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AddFoodComponent } from './login/home/add-food/add-food.component';
 
 const routes: Routes =([
   {path: "", component: LoginComponent},
@@ -36,7 +37,8 @@ const routes: Routes =([
     HomeComponent,
     LoginNavComponent,
     RegNavComponent,
-    HomeNavComponent
+    HomeNavComponent,
+    AddFoodComponent
   ],
   imports: [
     BrowserModule,
