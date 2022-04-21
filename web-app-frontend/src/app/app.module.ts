@@ -12,10 +12,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './login/home/home.component';
 import { LoginNavComponent } from './login/login-nav/login-nav.component';
 import { RegNavComponent } from './register/reg-nav/reg-nav.component';
-import { HomeNavComponent } from './home/home-nav/home-nav.component';
+import { HomeNavComponent } from './login/home/home-nav/home-nav.component';
 import { ServerService } from './services/server.service';
 import { HttpClientModule } from '@angular/common/http';
 
