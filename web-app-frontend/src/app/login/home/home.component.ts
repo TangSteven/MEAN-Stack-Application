@@ -15,10 +15,15 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private backend:ServerService) {
     
   }
+  
 
   ngOnInit(): void {
     this.user = localStorage.getItem("user");
+    this.backend.getFoods(this.user).subscribe(foods => {
+      this.foods = foods;
+    })
   }
+
 
 
 

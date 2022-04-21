@@ -61,7 +61,8 @@ exports.getFoods = async (req, res) => {
     const foods = await userModel.findOne({"user": req.params.user}, 'foods');
     //finds user based on req.params then it returns fields in the 2nd optional parameter named foods
     // for multiple fields it would be 'foods _id'
-    res.status('200').json(foods);
+    console.log(foods.foods);
+    res.status('200').json(foods.foods);
     //returns the foods array with _id
 }
 

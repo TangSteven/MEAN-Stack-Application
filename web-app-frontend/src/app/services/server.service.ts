@@ -33,6 +33,7 @@ export class ServerService {
   }
 
   getFoods(user: any): Observable<any> {
-    return this.http.get("http://localhost:3000/api/user/"+user.user, {withCredentials: true})
+    console.log(user);
+    return this.http.get("http://localhost:3000/api/user/"+user, {withCredentials: true})
   }
 }
