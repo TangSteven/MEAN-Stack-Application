@@ -19,9 +19,9 @@ export class LoginComponent implements OnInit {
 
 
   //injecting formbuilder as formBuilder into component
-  constructor(private formBuilder: FormBuilder, private router: Router, private backend: ServerService) { } 
+  constructor(private formBuilder: FormBuilder, private router: Router, private backend: ServerService) { 
+  } 
 
-  user = '';
   //creating a formgroup for the form
   loginForm = this.formBuilder.group({
     //first parameter in array is the initial value
@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
 
   
   ngOnInit(): void {
+    
 
   }
 
@@ -40,10 +41,12 @@ export class LoginComponent implements OnInit {
     //console.log(this.loginForm.value);
     //this.loginform.value is a json of the fields, can check by printing this.loginform
     //uses the services function, and the json as req.body
+
     this.backend.login(this.loginForm.value).subscribe( query => {
       if (query) { // if the login was correct
         console.log("correct login", query);
-        this.user = this.loginForm.value.user;
+
+        localStorage.setItem("user", this.loginForm.value.user);
         this.router.navigate(['/home']); //navigate to home page
       }
       else { //if login was incorrect

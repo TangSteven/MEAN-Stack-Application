@@ -5,6 +5,9 @@ require('dotenv').config();
 //cors options
 const cors = require('cors');
 
+//cookie
+const cookieParser = require('cookie-parser');
+
 
 const express = require("express");
 const mongoose = require('mongoose');//used to connect to mongodb
@@ -21,7 +24,7 @@ const corsOptions = {
 } // allows the origin to reach this backend, if credentials are sent with them
 
 app.use(cors(corsOptions)); //allows the app to use cor options
-
+app.use(cookieParser());
 
 
 app.use(express.json()); //allows the app to understand JSON
