@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import {Router } from '@angular/router';
+import { ServerService } from '../services/server.service';
 
 @Component({
   selector: 'app-register',
@@ -12,20 +13,38 @@ import {Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private formBuilder: FormBuilder, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private backend: ServerService) { }
 
   registerForm = this.formBuilder.group( {
-    username: ['', [Validators.required]],
-    password: ['', [Validators.required, Validators.minLength(10)]],
+    user: ['', [Validators.required]],
+    pass: ['', [Validators.required, Validators.minLength(10)]],
     confirmPassword: ['', [Validators.required, Validators.minLength(10)]],
   })
 
   ngOnInit(): void {
   }
 
+  confirmPassword() {
+    return this.registerForm.value.pass == this.registerForm.value.confirmPassword;
+  }
+
+
   register() {
     console.log("registering");
-    this.router.navigate(['']);
+    if (this.confirmPassword()) {
+      this.backend.register({"user": this.registerForm.value.user, "pass": this.registerForm.value.pass}).subscribe(query => {
+        if (query) {
+          alert("Your account has been created. Please log in.");
+          this.router.navigate(['']);
+        }
+       
+      })
+      
+    }
+    else {
+      alert("The passwords must be the same.");
+    }
+    
   }
 
 }
