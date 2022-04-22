@@ -1,0 +1,12 @@
+<home-nav> </home-nav>
+<div class = "container-fluid"> 
+    <p>food-db works!</p>
+
+    <form [formGroup]="foodSearch" (ngSubmit)="addToCart()"> 
+        <label for = "foodSearchName">Search for Food </label> <br/>
+        <input type = "text" id = "foodSearchName" name = "foodSearchName" formControlName = "foodSearchName"> <br/>
+        <button type = submit> Add Food to Cart </button>
+
+    </form>
+
+</div>

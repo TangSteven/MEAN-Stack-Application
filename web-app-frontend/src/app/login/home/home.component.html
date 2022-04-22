@@ -4,14 +4,14 @@
     <div class = 'col-lg-10'>
         <h2> Food Cart</h2>
         <ul> 
-            <li style = "list-style: none;" *ngFor = "let food of foods"> {{food.name}} has {{food.calories}} calories.</li>
+            <li style = "list-style: none;" *ngFor = "let food of foods"> <img src = "{{food.image}}" width = "35" height = "35">  {{food.name}} has {{food.calories}} calories.  </li>
         </ul>
         <div > Total Calories: {{total}} </div>
     </div>
     <div class = 'col-lg-2' style = "border: solid 2px black;">
         <h1 style = "text-align: left;"> Add A Food</h1> 
         <add-food> </add-food> 
-
+        <button routerLink="/foods"> Food Database </button> 
     </div> 
     
     

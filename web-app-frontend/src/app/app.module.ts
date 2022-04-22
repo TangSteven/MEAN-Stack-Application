@@ -19,11 +19,14 @@ import { HomeNavComponent } from './login/home/home-nav/home-nav.component';
 import { ServerService } from './services/server.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AddFoodComponent } from './login/home/add-food/add-food.component';
+import { FoodAPIService } from './services/food-api.service';
+import { FoodDBComponent } from './login/home/food-db/food-db.component';
 
 const routes: Routes =([
   {path: "", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "home", component: HomeComponent},
+  {path: "foods", component: FoodDBComponent},
   
   
 
@@ -38,7 +41,8 @@ const routes: Routes =([
     LoginNavComponent,
     RegNavComponent,
     HomeNavComponent,
-    AddFoodComponent
+    AddFoodComponent,
+    FoodDBComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +51,7 @@ const routes: Routes =([
     RouterModule.forRoot(routes),
     HttpClientModule,
   ],
-  providers: [ServerService],
+  providers: [ServerService, FoodAPIService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
