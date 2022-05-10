@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs'); //adding bcrypt to encrypt password
 //using async/await function so i can assign to variable vs promise
 //function is based on req.body having the required info
 
+const jwt = require('jsonwebtoken'); //to create  jsonwebtoken
+
 //register for the user then redirect to login page
 exports.createUser = async (req, res) => { //model is on side note -> 
     let hash =  bcrypt.hashSync(req.body.pass, 10); //encrypts password into a hash
@@ -15,6 +17,7 @@ exports.createUser = async (req, res) => { //model is on side note ->
 //login function 
 exports.loginUser = async (req, res) => {
     //finds the user with username
+
     const user = await userModel.findOne({"user": req.body.user});
 
     if (user != null) { //if this user does exist
@@ -23,11 +26,15 @@ exports.loginUser = async (req, res) => {
         if (found) {
             //if the password is correct
             //create cookie 
+            const token = jwt.sign({_id: user._id}, "topsecret", {expiresIn: "2 minutes"}); //to create a json web token so the front end can see
+        
+            res.cookie('token', token); //sends the cookie in the response
 
             res.status('200').json(found);
         }
         else { //if password wrong
             //dont tell which is wrong, so harder to hack
+
             console.log("Wrong username or password");
             res.status('200').json(found);
         }
@@ -54,7 +61,7 @@ exports.getFoods = async (req, res) => {
     const foods = await userModel.findOne({"user": req.params.user}, 'foods');
     //finds user based on req.params then it returns fields in the 2nd optional parameter named foods
     // for multiple fields it would be 'foods _id'
-    res.status('200').json(foods);
+    res.status('200').json(foods.foods);
     //returns the foods array with _id
 }
 

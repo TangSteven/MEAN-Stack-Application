@@ -1,0 +1,22 @@
+
+<login-nav> </login-nav>
+
+
+<div class = "container-fluid"> 
+    <h1> Login Page </h1> 
+    <form [formGroup]="loginForm" (ngSubmit)="login()"> 
+
+        <label for = "user">Username: </label><br/>
+        <input type = "text" name = "user" id = "user" size = "25" formControlName = "user" required> <br/>
+        <label for = "pass">Password: </label><br/>
+        <input type = "password" name = "pass" id = "pass" size = "25" required minlength="10" formControlName = "pass" required> <br/>
+
+        <br/>
+        <button type = "submit"> Log in </button> 
+        <a routerLink="register"> Register </a>   
+
+
+    </form>
+
+</div> 
+

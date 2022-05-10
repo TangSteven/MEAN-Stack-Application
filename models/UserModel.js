@@ -19,8 +19,12 @@ const userSchema = mongoose.Schema( { //model schema with contraints
             type: Number
         },
         "favorite": {
-            type: Boolean
+            type: Boolean,
+            default: false,
             
+        },
+        "image": {
+            type:String
         }
     }]
 })
